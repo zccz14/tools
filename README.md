@@ -8,7 +8,7 @@ Small, single-purpose browser tools. No backend, no tracking, no data leaves you
 
 | Tool | What it does |
 | --- | --- |
-| EVM Wallet | Generate / derive EVM accounts entirely in your browser (BIP-39 mnemonic, secp256k1, EIP-55 address). |
+| EVM Key Generator | Generate a secp256k1 private key and derive its EIP-55 address — entirely in the browser. Raw keys only: no seed phrases. |
 
 ## Development
 

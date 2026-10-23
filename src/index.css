@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+:root {
+  --canvas: #fafafb;
+  --surface: #ffffff;
+  --elevated: #f4f5f8;
+  --ink: #0d1017;
+  --muted: #5c6675;
+  --line: #e3e6ec;
+  --accent: #4f46e5;
+  --accent-ink: #ffffff;
+  --accent-soft: #eef0ff;
+  --danger: #d92d20;
+  --success: #067647;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #08090c;
+    --surface: #0f1116;
+    --elevated: #161922;
+    --ink: #eef1f7;
+    --muted: #98a2b3;
+    --line: #22262f;
+    --accent: #7c80f8;
+    --accent-ink: #0b0c10;
+    --accent-soft: #1a1c2b;
+    --danger: #f97066;
+    --success: #47cd89;
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  * {
+    border-color: var(--line);
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 26%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--accent) 70%, transparent);
+    outline-offset: 2px;
+  }
+  input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+  }
+}
+
+/* soft brand glow behind the header */
+.aura::before {
+  content: "";
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  height: 460px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(52% 100% at 50% 0%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 72%),
+    radial-gradient(40% 100% at 82% 4%, color-mix(in oklab, #22d3ee 10%, transparent), transparent 70%);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
