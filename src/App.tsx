@@ -4,6 +4,7 @@ import { SiteHeader } from "./components/site-header"
 import { EvmKeygenPage } from "./pages/evm-keygen"
 import { HomePage } from "./pages/home"
 import { NotFoundPage } from "./pages/not-found"
+import { SolanaKeygenPage } from "./pages/solana-keygen"
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/evm-keygen" element={<EvmKeygenPage />} />
+          <Route path="/solana-keygen" element={<SolanaKeygenPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

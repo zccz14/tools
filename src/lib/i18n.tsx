@@ -38,6 +38,15 @@ const MESSAGES: Record<string, { zh: string; en: string }> = {
   "tool.keygen.tag2": { zh: "keccak-256", en: "keccak-256" },
   "tool.keygen.tag3": { zh: "离线可用", en: "works offline" },
 
+  "tool.solana.name": { zh: "Solana 私钥生成器", en: "Solana Key Generator" },
+  "tool.solana.desc": {
+    zh: "生成 ed25519 密钥对：base58 公钥加 64 字节拓展私钥，就是 Phantom 导出来的那种。同样没有助记词。",
+    en: "Generates an ed25519 keypair: base58 public key plus the 64-byte extended private key — exactly what Phantom hands you on export. Still no seed phrase.",
+  },
+  "tool.solana.tag1": { zh: "ed25519", en: "ed25519" },
+  "tool.solana.tag2": { zh: "base58", en: "base58" },
+  "tool.solana.tag3": { zh: "离线可用", en: "works offline" },
+
   "common.copy": { zh: "复制", en: "Copy" },
   "common.copied": { zh: "已复制", en: "Copied" },
   "common.reveal": { zh: "显示", en: "Reveal" },
@@ -80,6 +89,49 @@ const MESSAGES: Record<string, { zh: string; en: string }> = {
     en: "Not a valid key: either it isn't 64 hex characters, or it's outside the secp256k1 order.",
   },
 
+  "solana.title": { zh: "Solana 私钥生成器", en: "Solana Key Generator" },
+  "solana.subtitle": {
+    zh: "32 字节熵 → ed25519 → base58 公钥，外加 64 字节拓展私钥（seed ‖ pubkey）。全程在这个标签页里，刷新即销毁。",
+    en: "32 bytes of entropy → ed25519 → base58 public key, plus the 64-byte extended private key (seed ‖ pubkey). All of it happens in this tab, and dies on reload.",
+  },
+  "solana.status": { zh: "本地运行", en: "local" },
+  "solana.tab.generate": { zh: "生成", en: "Generate" },
+  "solana.tab.derive": { zh: "查地址", en: "Derive" },
+
+  "solana.address": { zh: "公钥 / 地址", en: "Address (public key)" },
+  "solana.address.meta": { zh: "base58 公钥 · 这个可以直接发人", en: "base58 public key · safe to share" },
+  "solana.key": { zh: "私钥 · 拓展格式", en: "Private key · extended" },
+  "solana.key.meta.hidden": { zh: "64 字节 base58 · 别截图，别发微信", en: "64-byte base58 · no screenshots, no chat apps" },
+  "solana.key.meta.shown": { zh: "已显示 · 刷新页面就没了", en: "shown · gone on reload" },
+  "solana.seed": { zh: "种子 · 32 字节", en: "Seed · 32 bytes" },
+  "solana.seed.meta": {
+    zh: "ed25519 原始种子 · 有些工具只认这 32 字节",
+    en: "raw ed25519 seed · some tools want only these 32 bytes",
+  },
+  "solana.generate": { zh: "换一个", en: "Regenerate" },
+  "solana.save": { zh: "存成 .txt", en: "Save .txt" },
+  "solana.created": { zh: "生成于", en: "created" },
+
+  "solana.derive.title": { zh: "看看这个私钥是谁的", en: "Whose key is this?" },
+  "solana.derive.desc": {
+    zh: "粘 base58 私钥（64 字节拓展或 32 字节种子），或者 solana-keygen 导出的 JSON 数组，在本地算出公钥。不上传、不缓存。",
+    en: "Paste a base58 private key (64-byte extended or 32-byte seed), or the JSON array solana-keygen exports, and derive its public key locally. No upload, no cache.",
+  },
+  "solana.derive.placeholder": { zh: "base58 私钥，或 [12,34,…] 字节数组", en: "base58 key, or a [12,34,…] byte array" },
+  "solana.derive.run": { zh: "算公钥", en: "Derive" },
+  "solana.derive.clear": { zh: "清空", en: "Clear" },
+  "solana.derive.result": { zh: "对应的公钥", en: "Resolves to" },
+  "solana.derive.ok": { zh: "私钥合法", en: "valid key" },
+  "solana.derive.empty": { zh: "还没输入。", en: "Nothing entered." },
+  "solana.derive.seedNote": {
+    zh: "按 32 字节种子解释的 · 地址也是 32 字节 base58，别贴错",
+    en: "Read as a 32-byte seed · an address is 32-byte base58 too, so don't mix them up",
+  },
+  "solana.derive.bad": {
+    zh: "这不是合法私钥：要 base58 的 32 或 64 字节，或 JSON 字节数组；64 字节时后 32 字节必须是公钥。",
+    en: "Not a valid key: it must be base58 of 32 or 64 bytes, or a JSON byte array — and in the 64-byte form the last 32 bytes must be the public key.",
+  },
+
   "notes.title": { zh: "几句实话", en: "Straight talk" },
   "notes.1.title": { zh: "不联网", en: "No wire" },
   "notes.1.body": {
@@ -103,9 +155,13 @@ const MESSAGES: Record<string, { zh: string; en: string }> = {
   },
 
   "about.title": { zh: "关于", en: "About" },
-  "about.body": {
+  "keygen.about": {
     zh: "开源、无服务端，密码学来自 @noble/curves 与 @noble/hashes。",
     en: "Open source, no server. Crypto by @noble/curves and @noble/hashes.",
+  },
+  "solana.about": {
+    zh: "开源、无服务端，密码学来自 @noble/curves，base58 来自 @scure/base。",
+    en: "Open source, no server. Crypto by @noble/curves, base58 by @scure/base.",
   },
   "about.build": { zh: "构建", en: "Build" },
 
